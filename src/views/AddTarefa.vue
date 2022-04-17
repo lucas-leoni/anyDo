@@ -25,7 +25,7 @@
                   <th scope="col">Ação</th>
                 </tr>
               </thead>
-              <tbody v-for="tarefa in tarefas" :key="tarefa.id">
+              <tbody v-for="tarefa in tarefa" :key="tarefa.id">
                 <Tasks :tarefa="tarefa" />
               </tbody>
             </table>
@@ -40,25 +40,15 @@ import Form from "@/components/Form.vue";
 import Tasks from "@/components/Tasks.vue";
 export default {
   name: "AddTarefa",
+  props: {
+    tarefa: {
+      type: Array,
+      required: true,
+    },
+  },
   components: {
     Form,
     Tasks,
-  },
-  data() {
-    return {
-      tarefas: [],
-    };
-  },
-  methods: {
-    exibirLocalStorage() {
-      let tarefasStorage = JSON.parse(localStorage.getItem("dadosTarefa"));
-      this.tarefas = this.tarefas.concat(tarefasStorage);
-    },
-  },
-  beforeMount() {
-    if (localStorage.getItem("dadosTarefa")) {
-      this.exibirLocalStorage();
-    }
   },
 };
 </script>

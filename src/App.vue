@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <router-view />
+    <router-view :tarefa="tarefas" />
   </div>
 </template>
 <script>
@@ -10,6 +10,22 @@ export default {
   name: "App",
   components: {
     Header,
+  },
+  data() {
+    return {
+      tarefas: [],
+    };
+  },
+  methods: {
+    exibirLocalStorage() {
+      let tarefasStorage = JSON.parse(localStorage.getItem("dadosTarefa"));
+      this.tarefas = this.tarefas.concat(tarefasStorage);
+    },
+  },
+  beforeMount() {
+    if (localStorage.getItem("dadosTarefa")) {
+      this.exibirLocalStorage();
+    }
   },
 };
 </script>

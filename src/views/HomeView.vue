@@ -38,7 +38,7 @@
               <th scope="col">Ação</th>
             </tr>
           </thead>
-          <tbody v-for="tarefa in tarefas" :key="tarefa.id">
+          <tbody v-for="tarefa in tarefa" :key="tarefa.id">
             <Tasks :tarefa="tarefa" />
           </tbody>
         </table>
@@ -67,6 +67,12 @@
 import Tasks from "@/components/Tasks.vue";
 export default {
   name: "HomeView",
+  props: {
+    tarefa: {
+      type: Array,
+      required: true,
+    },
+  },
   components: {
     Tasks,
   },
@@ -89,7 +95,6 @@ export default {
           description: "organizar SO",
         },
       ],
-      tarefas: [],
     };
   },
   methods: {

@@ -321,11 +321,6 @@
           <a class="text-primary text-decoration-none" href="/add-tarefa">
             Adicionar
           </a>
-          <!-- <router-link
-            class="text-primary text-decoration-none"
-            to="/add-tarefa"
-            > -->
-          <!-- </router-link> -->
         </button>
       </div>
     </div>
