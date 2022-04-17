@@ -1,6 +1,10 @@
 <template>
   <tr>
-    <td class="text-center">{{ tarefa.id }}</td>
+    <td class="text-center">
+      <router-link class="text-decoration-none" v-bind:to="url()">
+        {{ tarefa.id }}
+      </router-link>
+    </td>
     <td>{{ tarefa.title }}</td>
     <td>{{ tarefa.description }}</td>
     <td class="text-center">
@@ -44,6 +48,11 @@ export default {
     tarefa: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    url() {
+      return "/tarefa/" + this.tarefa.id;
     },
   },
 };
