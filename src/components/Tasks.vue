@@ -3,7 +3,22 @@
     <td class="text-center">{{ tarefa.id }}</td>
     <td>{{ tarefa.title }}</td>
     <td>{{ tarefa.description }}</td>
-    <td class="text-center">{{ tarefa.status }}</td>
+    <td class="text-center">
+      <span
+        v-if="tarefa.status === 'ToDo'"
+        class="badge badge-primary bg-primary"
+      >
+        {{ tarefa.status }}
+      </span>
+      <span
+        v-else-if="tarefa.status === 'WiP'"
+        class="badge badge-warning bg-warning text-dark"
+        >{{ tarefa.status }}</span
+      >
+      <span v-else class="badge badge-success bg-success">{{
+        tarefa.status
+      }}</span>
+    </td>
     <td class="text-center">
       <button type="button" class="btn text-danger p-0 border-0">
         <svg

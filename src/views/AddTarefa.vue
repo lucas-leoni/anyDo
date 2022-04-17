@@ -5,7 +5,7 @@
     </h3>
     <div class="row justify-content-around">
       <div id="divisoria" class="col-8 pt-5">
-        <Form @v-model="receberVmodel" />
+        <Form />
       </div>
       <div class="col-4">
         <div class="row justify-content-center mb-5">
@@ -50,15 +50,15 @@ export default {
     };
   },
   methods: {
-    receberVmodel(obj) {
-      let objeto = {
-        id: obj.id,
-        title: obj.title,
-        description: obj.description,
-        status: obj.status,
-      };
-      this.tarefas.push(objeto);
+    exibirLocalStorage() {
+      let tarefasStorage = JSON.parse(localStorage.getItem("dadosTarefa"));
+      this.tarefas = this.tarefas.concat(tarefasStorage);
     },
+  },
+  beforeMount() {
+    if (localStorage.getItem("dadosTarefa")) {
+      this.exibirLocalStorage();
+    }
   },
 };
 </script>

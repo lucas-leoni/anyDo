@@ -318,11 +318,14 @@
           type="button"
           class="btn btn-light border border-primary"
         >
-          <router-link
+          <a class="text-primary text-decoration-none" href="/add-tarefa">
+            Adicionar
+          </a>
+          <!-- <router-link
             class="text-primary text-decoration-none"
             to="/add-tarefa"
-            >Adicionar
-          </router-link>
+            > -->
+          <!-- </router-link> -->
         </button>
       </div>
     </div>
@@ -416,19 +419,27 @@ export default {
       };
       localStorage.setItem("dadosUsuario", JSON.stringify(dadosUsuario));
     },
+    salvar2() {
+      let dadosTarefa = new Array();
+      if (localStorage.hasOwnProperty("dadosTarefa")) {
+        dadosTarefa = JSON.parse(localStorage.getItem("dadosTarefa"));
+      }
+      const dadosSalvar = {
+        id: Math.floor(Math.random() * 1000),
+        title: this.title,
+        description: this.description,
+        status: this.status,
+      };
+      dadosTarefa.push(dadosSalvar);
+      localStorage.setItem("dadosTarefa", JSON.stringify(dadosTarefa));
+    },
     limparForm() {
       this.title = "";
       this.status = "Select";
       this.description = "";
     },
     click() {
-      /* this.salvar2(); */
-      this.$emit("v-model", {
-        id: Math.floor(Math.random() * 1000),
-        title: this.title,
-        status: this.status,
-        description: this.description,
-      });
+      this.salvar2();
       this.limparForm();
     },
   },
