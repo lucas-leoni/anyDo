@@ -264,7 +264,7 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-around mw-100">
+    <div v-if="rotaTarefa" class="row justify-content-around mw-100">
       <div class="col-11">
         <div class="row">
           <label class="my-5" for="description">
@@ -286,7 +286,7 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-around mt-5 mw-100">
+    <div v-if="rotaTarefa" class="row justify-content-around mt-5 mw-100">
       <div class="col-5">
         <button
           @click="cancelar2()"
